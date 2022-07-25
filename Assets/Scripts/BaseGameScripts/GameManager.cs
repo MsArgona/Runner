@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     [Header("Scores/UI")]
     [SerializeField] private GameObject[] Stars; //всегда 3
+    private int gotStars;
     [SerializeField] private GameObject WinText;
     [SerializeField] private GameObject NewBestText;
     public Text DistanceScore;
@@ -62,6 +63,8 @@ public class GameManager : MonoBehaviour
         gameData = FindObjectOfType<GameData>();
         Time.timeScale = 1;
 
+        gotStars = 0;
+
         if (EndPos != null)
         {
             GameMenu.SetActive(false);
@@ -91,7 +94,7 @@ public class GameManager : MonoBehaviour
         Pause();
     }
 
-    public void WinMenu()
+    private void CountStars()
     {
         int tmp = totalStarsCount / 3; //делим на 3, т.к. всего звезд 3, чтобы знать, сколько стоит 1 звезда
         int activeStars = 0;
@@ -104,8 +107,12 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < activeStars; i++)
         {
             Stars[i].SetActive(true);
+            gotStars++;
         }
+    }
 
+    public void WinMenu()
+    {
         //тут разделить для победа и получен новый лучший результат
         WinText.SetActive(true);
         NewBestText.SetActive(false);
@@ -124,6 +131,7 @@ public class GameManager : MonoBehaviour
 
         if (PlayerPos.transform.position.x >= EndPos.transform.position.x)
         {
+            CountStars();
             WinMenu();
         }
     }
@@ -176,6 +184,7 @@ public class GameManager : MonoBehaviour
         //если новый результат лучший, то показать это
         if (AreNewScoresBest())
         {
+            CountStars();
             SaveDatas();
             WinMenu();   
         } //иначе сразу начинаем заново уровень
@@ -185,11 +194,9 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Смотрится только расстояние. Если прошел дальше, то это новый лучший результат
     private bool AreNewScoresBest()
     {
-        //Debug.Log("curDistance: " + curDistance);
-        //Debug.Log("gameData: " + gameData.GetBestDistance(CurLevel));
-
         if (curDistance > gameData.GetBestDistance(CurLevel))
             return true;
 
@@ -202,8 +209,9 @@ public class GameManager : MonoBehaviour
         {
             if (gameData.GetBestDistance(CurLevel) < curDistance)
                 gameData.SetBestDistance(CurLevel, curDistance);
-            if (gameData.GetBestStars(CurLevel) < starScore)
-                gameData.SetBestStars(CurLevel, starScore);
+            
+            if (gameData.GetBestStars(CurLevel) < gotStars)
+                gameData.SetBestStars(CurLevel, gotStars);
         }
     }
 

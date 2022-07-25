@@ -9,26 +9,29 @@ public class GameData : MonoBehaviour
     public readonly int countOfPlayableScenes = 3; //3 игровых уровня: от 1 до 3 влючительно. 0 - это главное меню
 
     private int[] distanceScore; //максимум 3 элемента, т.к. 3 уровня
-    private int[] stars;
+    private int[] stars; //кол-во полученных звезд (всего 3)
 
-    private void Start()
+    private int curLevel;
+
+
+    private void Awake()
     {
         distanceScore = new int[countOfPlayableScenes];
         stars = new int[countOfPlayableScenes];
 
-        if (!PlayerPrefs.HasKey("distance" + GameManager.CurLevel))
+        for (int i = 1; i <= countOfPlayableScenes; i++)
         {
-            for (int i = 1; i <= countOfPlayableScenes; i++)
+            if (!PlayerPrefs.HasKey("distance" + i))
                 Save("distance", i, 0);
-        }
-
-        if (!PlayerPrefs.HasKey("stars" + GameManager.CurLevel))
-        {
-            for (int i = 1; i <= countOfPlayableScenes; i++)
+            if (!PlayerPrefs.HasKey("stars" + i))
                 Save("stars", i, 0);
         }
 
         Load();
+    }
+    private void Start()
+    {
+        curLevel = GameManager.CurLevel;
     }
 
     public void Save(string name, int numOfScene, int newValue)

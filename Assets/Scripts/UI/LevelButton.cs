@@ -24,8 +24,6 @@ public class LevelButton : MonoBehaviour
     private Text levelText;
     [SerializeField]
     private int level;
-    [SerializeField]
-    private GameObject confirmPanel;
 
     private GameData gameData;
 
@@ -38,17 +36,18 @@ public class LevelButton : MonoBehaviour
     private void Start()
     {
         gameData = FindObjectOfType<GameData>();
+        ShowLevel();
         LoadData();
         ActivateStars();
-        ShowLevel();
+       
         //DecideSprite();
     }
 
     void LoadData()
     {
         if (gameData != null)
-        {
-            //starsActive = gameData.saveData.stars[level - 1];  вернуть
+        {          
+            starsActive = gameData.GetBestStars(level);
         }
     }
 
@@ -85,11 +84,5 @@ public class LevelButton : MonoBehaviour
     void ShowLevel()
     {
         levelText.text = "" + level;
-    }
-
-    public void ConfirmPanel(int level)
-    {
-        confirmPanel.GetComponent<ConfirmPanel>().level = level;
-        confirmPanel.SetActive(true);
     }
 }
