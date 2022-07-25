@@ -187,8 +187,8 @@ public class GameManager : MonoBehaviour
 
     private bool AreNewScoresBest()
     {
-        Debug.Log("curDistance: " + curDistance);
-        Debug.Log("gameData: " + gameData.GetBestDistance(CurLevel));
+        //Debug.Log("curDistance: " + curDistance);
+        //Debug.Log("gameData: " + gameData.GetBestDistance(CurLevel));
 
         if (curDistance > gameData.GetBestDistance(CurLevel))
             return true;
