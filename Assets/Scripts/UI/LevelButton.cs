@@ -3,27 +3,19 @@ using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
-
+using TMPro;
 public class LevelButton : MonoBehaviour
 {
     [Header("Active Stuff")]
-    //[SerializeField]
-    //private bool isActive;
-   // [SerializeField]
-   // private Sprite activeSprite;
-   // [SerializeField]
-   // private Sprite lockedSprite;
     private Image buttonImage;
     private Button myButton;
     private int starsActive;
 
     [Header("Level UI")]
-    [SerializeField]
-    private Image[] stars;
-    [SerializeField]
-    private Text levelText;
-    [SerializeField]
-    private int level;
+    [SerializeField] private Image[] stars;
+    [SerializeField] private int level;
+    [SerializeField] private TextMeshProUGUI percent;
+    [SerializeField] private TextMeshProUGUI luminScore;
 
     private GameData gameData;
 
@@ -36,18 +28,17 @@ public class LevelButton : MonoBehaviour
     private void Start()
     {
         gameData = FindObjectOfType<GameData>();
-        ShowLevel();
         LoadData();
         ActivateStars();
-       
-        //DecideSprite();
     }
 
     void LoadData()
     {
         if (gameData != null)
-        {          
+        {
             starsActive = gameData.GetBestStars(level);
+            percent.text = gameData.GetBestDistance(level).ToString();
+            luminScore.text = gameData.GetBestLumin(level).ToString() + "/" + gameData.GetTotalLumin(level).ToString();
         }
     }
 
@@ -55,34 +46,12 @@ public class LevelButton : MonoBehaviour
     {
         for (int i = 0; i < starsActive; i++)
         {
-             stars[i].enabled = true; 
-        }    
+            stars[i].enabled = true;
+        }
     }
-
-    //void DecideSprite()
-    //{
-    //    if (isActive)
-    //    {
-    //        buttonImage.sprite = activeSprite;
-    //        myButton.enabled = true;
-    //        levelText.enabled = true;
-    //    }
-    //    else
-    //    {
-    //        buttonImage.sprite = lockedSprite;
-    //        myButton.enabled = false;
-    //        levelText.enabled = false;
-    //    }
-
-    //}
 
     public void LoadLevel()
     {
         SceneManager.LoadScene(level);
-    }
-
-    void ShowLevel()
-    {
-        levelText.text = "" + level;
     }
 }
