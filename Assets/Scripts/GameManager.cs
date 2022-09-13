@@ -9,11 +9,11 @@ public class GameManager : MonoBehaviour
     public static int CurLevel;
 
     [Header("Scores/UI")]
-    [SerializeField] private GameObject[] stars; //всегда 3
-    private int gotStars; //всегда макс 3
-    [SerializeField] private Text distanceScore;
-    private double distance;
+    [SerializeField] private Slider progressSlider; //distance
+    private float distance;
     [SerializeField] private Text scoreValue;
+    private int gotStars; //всегда макс 3
+
     public int Score
     {
         get { return luminScore; }
@@ -124,22 +124,13 @@ public class GameManager : MonoBehaviour
         else if (luminScore >= tmp && luminScore < 2 * tmp) { gotStars = 1; }
         else if (luminScore >= 2 * tmp && luminScore < totalLuminCount) { gotStars = 2; }
         else { gotStars = 3; } //можно получить только собрав все светяшки
-
-        ActivateStars(gotStars);
-    }
-
-    private void ActivateStars(int gotStars)
-    {
-        //от 0 до 3
-        for (int i = 0; i < gotStars; i++)
-        {
-            stars[i].SetActive(true);
-        }
     }
 
     private void WinMenu()
-    {
+    { 
         levelComplMenu.SetActive(true);
+        levelComplMenu.GetComponent<LevelComplMenu>().SetActive(curDistance, luminScore, totalLuminCount, gotStars);
+
         newBestMenu.SetActive(false);
 
         Summarizing();
@@ -151,8 +142,10 @@ public class GameManager : MonoBehaviour
 
     private void ShowNewBestMenu()
     {
-        levelComplMenu.SetActive(false);
         newBestMenu.SetActive(true);
+        newBestMenu.GetComponent<NewBestMenu>().SetActive(curDistance, luminScore, totalLuminCount, gotStars);
+
+        levelComplMenu.SetActive(false);
 
         isMenuActive = true;
         audioSource.Pause();
@@ -163,7 +156,7 @@ public class GameManager : MonoBehaviour
     {
         distance = endPos.position.x - playerPos.transform.position.x;
         curDistance = 100 - (int)(distance / onePercent);
-        distanceScore.text = curDistance.ToString() + "%";
+        progressSlider.value = curDistance;
 
         if (playerPos.transform.position.x >= endPos.transform.position.x)
         {
@@ -224,10 +217,10 @@ public class GameManager : MonoBehaviour
             {
                 ShowNewBestMenu();
             }
-            else  //иначе сразу начинаем заново уровень
-            {
-                SceneManager.LoadScene(CurLevel);
-            }
+        }
+        else if (isPlayerDead)  //иначе сразу начинаем заново уровень
+        {
+            SceneManager.LoadScene(CurLevel);
         }
     }
 

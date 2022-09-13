@@ -37916,6 +37916,11 @@ PrefabInstance:
       propertyPath: LightsModule.light
       value: 
       objectReference: {fileID: 3513784227897383821}
+    - target: {fileID: 3805491569184758491, guid: 6d6481e13d77f9b4c90db700910e36bc,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d6481e13d77f9b4c90db700910e36bc, type: 3}
 --- !u!4 &1187074887 stripped
@@ -63601,6 +63606,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1987639855}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1987800728 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1030983182792028050, guid: a871f135d84f7104a9ef95dfe4368da4,
+    type: 3}
+  m_PrefabInstance: {fileID: 487414449621776534}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1988497622
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -68345,6 +68362,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas
       objectReference: {fileID: 0}
+    - target: {fileID: 487414450710609104, guid: a871f135d84f7104a9ef95dfe4368da4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 487414450710609116, guid: a871f135d84f7104a9ef95dfe4368da4,
         type: 3}
       propertyPath: m_Pivot.x
@@ -68455,6 +68477,16 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 487414450971970852, guid: a871f135d84f7104a9ef95dfe4368da4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 487414450971970855, guid: a871f135d84f7104a9ef95dfe4368da4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2047230632607985763, guid: a871f135d84f7104a9ef95dfe4368da4,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -68475,10 +68507,20 @@ PrefabInstance:
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3054544754316074763, guid: a871f135d84f7104a9ef95dfe4368da4,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3054544754316074763, guid: a871f135d84f7104a9ef95dfe4368da4,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3951693003352194896, guid: a871f135d84f7104a9ef95dfe4368da4,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5170866454607919973, guid: a871f135d84f7104a9ef95dfe4368da4,
         type: 3}
@@ -68489,6 +68531,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264672154612097769, guid: a871f135d84f7104a9ef95dfe4368da4,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 487414449621776541}
+    - target: {fileID: 5264672154612097769, guid: a871f135d84f7104a9ef95dfe4368da4,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChangeVolume
+      objectReference: {fileID: 0}
+    - target: {fileID: 5264672154612097769, guid: a871f135d84f7104a9ef95dfe4368da4,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SoundManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6312626757328142571, guid: a871f135d84f7104a9ef95dfe4368da4,
         type: 3}
@@ -68548,6 +68605,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 487414449621776534}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &487414449621776541 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3045500637505475866, guid: a871f135d84f7104a9ef95dfe4368da4,
+    type: 3}
+  m_PrefabInstance: {fileID: 487414449621776534}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b77049813beeebf49a15152965abbdc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1764432341253242757
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69283,6 +69352,11 @@ PrefabInstance:
       propertyPath: LightsModule.light
       value: 
       objectReference: {fileID: 3513784227897383821}
+    - target: {fileID: 3805491569184758491, guid: 6d6481e13d77f9b4c90db700910e36bc,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d6481e13d77f9b4c90db700910e36bc, type: 3}
 --- !u!1001 &4378108686926682253
@@ -69612,6 +69686,11 @@ PrefabInstance:
       propertyPath: levelComplMenu
       value: 
       objectReference: {fileID: 487414449621776539}
+    - target: {fileID: 6417511409963480318, guid: 0efc64c067c672946abdc345994bc378,
+        type: 3}
+      propertyPath: progressSlider
+      value: 
+      objectReference: {fileID: 1987800728}
     - target: {fileID: 6417511409963480318, guid: 0efc64c067c672946abdc345994bc378,
         type: 3}
       propertyPath: Stars.Array.size

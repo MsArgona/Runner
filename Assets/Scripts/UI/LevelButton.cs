@@ -16,6 +16,7 @@ public class LevelButton : MonoBehaviour
     [SerializeField] private int level;
     [SerializeField] private TextMeshProUGUI percent;
     [SerializeField] private TextMeshProUGUI luminScore;
+    [SerializeField] private Slider levelComplSlider;
 
     private GameData gameData;
 
@@ -39,6 +40,8 @@ public class LevelButton : MonoBehaviour
             starsActive = gameData.GetBestStars(level);
             percent.text = gameData.GetBestDistance(level).ToString();
             luminScore.text = gameData.GetBestLumin(level).ToString() + "/" + gameData.GetTotalLumin(level).ToString();
+
+            levelComplSlider.value = gameData.GetBestDistance(level);
         }
     }
 

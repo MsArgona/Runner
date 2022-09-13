@@ -32,6 +32,12 @@ public class GameData : MonoBehaviour
         curLevel = GameManager.CurLevel;
     }
 
+    //УДАЛИТЬ ЭТОТ МЕТОД
+    public void DELETE()
+    {
+        ResetAllDatas();
+    }
+
     public void Save(string name, int numOfScene, int newValue)
     {
         name += numOfScene;
