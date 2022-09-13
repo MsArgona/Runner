@@ -61,7 +61,7 @@ public class Effects : MonoBehaviour
 
     protected void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
+        if (collision.CompareTag("Player") && !isTouched)
         {
             if (this.CompareTag("Star"))
             {
